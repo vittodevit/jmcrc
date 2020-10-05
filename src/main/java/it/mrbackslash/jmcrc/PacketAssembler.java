@@ -13,6 +13,7 @@ public class PacketAssembler {
      * @param requestId  Request identifier
      * @param requestType Request type: 3 for login, 2 to run a command
      * @param payload Content of the request, can be the password or the command
+     * @throws InvalidPayloadJmcrcException Packet is not valid
      * @return byte[]
      */
     @SuppressWarnings("unused")
@@ -51,7 +52,7 @@ public class PacketAssembler {
     /**
      * Checks if the string is pure ASCII
      * @param s String to check
-     * @return bool
+     * @return boolean
      */
     private boolean isAscii (@NotNull String s){
         return Charset.forName("US-ASCII").newEncoder().canEncode(s);
