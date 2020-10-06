@@ -1,17 +1,17 @@
 package it.mrbackslash.jmcrc;
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 import java.lang.System;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
 /**
- * PacketAssembler class. Assembles valid packets for RCON protocol + utilities.
+ * PacketAssembler class. Assembles valid packets for RCON protocol + utilities. [VERSION 1.0]
  * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
  * @author mrBackSlash-it
  */
 public class PacketAssembler {
-    private static final byte[] padding = {0x00, 0x00};
+    private static final byte[] padding = {0x00, 0x00}; //default padding value
 
     /**
      * Assembles a packet valid for the RCON Protocol
@@ -48,7 +48,7 @@ public class PacketAssembler {
     }
 
     /**
-     * Converts an int to a byte[]
+     * Converts an int to a byte[4] array (little-endian)
      * @param i Integer to convert
      * @return byte[]
      */

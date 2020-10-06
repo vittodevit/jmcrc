@@ -16,14 +16,14 @@ limitations under the License.
 */
 
 package it.mrbackslash.jmcrc;
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 import java.io.*;
 import java.net.Socket;
 import java.util.Arrays;
 
 /**
-* RCON Client for Minecraft servers implemented in Java
+* RCON Client for Minecraft servers implemented in Java [VERSION 1.0]
 * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
 * @author mrBackSlash-it
  */
@@ -104,6 +104,8 @@ public class Jmcrc {
         //noinspection ResultOfMethodCallIgnored
         in.read(dataBuffer);
         byte[] bResponse = PacketDisassembler.disassemblePacket(dataBuffer, PacketDisassembler.PACKET_S_PAYLOAD);
+        //clean buffer and return
+        dataBuffer = new byte[8192];
         return PacketDisassembler.rawPayloadToASCII(bResponse);
     }
 

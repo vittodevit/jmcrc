@@ -22,7 +22,7 @@ public class LibTester {
     public static void main (String[] args){
         Jmcrc client = new Jmcrc();
         try{
-            result = client.init("127.0.0.1", 25575, "password");
+            result = client.init("127.0.0.1", 25575, "pisello");
         }catch(Exception x) {
             System.out.println("Can't connect to the server");
         }

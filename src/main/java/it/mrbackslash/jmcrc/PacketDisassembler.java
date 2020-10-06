@@ -19,7 +19,7 @@ package it.mrbackslash.jmcrc;
 import java.nio.ByteBuffer;
 
 /**
- * PacketDisassembler class. Disassembles responses from the server.
+ * PacketDisassembler class. Disassembles responses from the server. [VERSION 1.0]
  * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
  * @author mrBackSlash-it
 */
