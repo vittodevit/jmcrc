@@ -5,6 +5,11 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
+/**
+ * PacketAssembler class. Assembles valid packets for RCON protocol + utilities.
+ * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
+ * @author mrBackSlash-it
+ */
 public class PacketAssembler {
     private static final byte[] padding = {0x00, 0x00};
 
