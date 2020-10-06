@@ -9,6 +9,15 @@ public class LibTester {
         }catch(Exception x) {
             System.out.println("Can't connect to the server");
         }
-        System.out.println(result);
+        System.out.println("Function result is " + result);
+        System.out.println("isConnected = " + client.isConnected());
+        System.out.println("address = " + client.getAddress());
+        System.out.println("port = " + client.getPort());
+        try{
+            String response = client.send("time set 0");
+            System.out.println("Server response: ");
+        }catch(Exception x){
+            System.out.println("Failed to send payload");
+        }
     }
 }
