@@ -19,5 +19,11 @@ public class LibTester {
         }catch(Exception x){
             System.out.println("Failed to send payload");
         }
+        try{
+            client.disconnect();
+        }catch(Exception x){
+            System.out.println("Socket err");
+        }
+
     }
 }
