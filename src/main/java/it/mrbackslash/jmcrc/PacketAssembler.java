@@ -1,10 +1,10 @@
 package it.mrbackslash.jmcrc;
 import com.sun.istack.internal.NotNull;
-import java.math.BigInteger;
 import java.lang.System;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
-@SuppressWarnings("unused")
 public class PacketAssembler {
     private static final byte[] padding = {0x00, 0x00};
 
@@ -16,8 +16,11 @@ public class PacketAssembler {
      * @throws InvalidPayloadJmcrcException Packet is not valid
      * @return byte[]
      */
-    @SuppressWarnings("unused")
     public static byte[] AssemblePacket(int requestId, int requestType, @NotNull String payload) throws InvalidPayloadJmcrcException{
+        //checks if payload is pure ascii
+        if(!isAscii(payload)){
+            throw new InvalidPayloadJmcrcException();
+        }
         //calculates the total length of the packet, length of the remainder and creates data array
         byte[] bPayload = payload.getBytes();
         int totLength = 14 + bPayload.length;
@@ -44,9 +47,11 @@ public class PacketAssembler {
      * @param i Integer to convert
      * @return byte[]
      */
-    private static byte[] intToByteArray (int i) {
-        BigInteger bi = BigInteger.valueOf(i);
-        return bi.toByteArray();
+    public static byte[] intToByteArray (int i) {
+        ByteBuffer buf = ByteBuffer.allocate(4);
+        buf.order(ByteOrder.LITTLE_ENDIAN);
+        buf.putInt(i);
+        return buf.array();
     }
 
     /**
@@ -54,7 +59,7 @@ public class PacketAssembler {
      * @param s String to check
      * @return boolean
      */
-    private boolean isAscii (@NotNull String s){
+    private static boolean isAscii (@NotNull String s){
         return Charset.forName("US-ASCII").newEncoder().canEncode(s);
     }
 }
