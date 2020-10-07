@@ -1,4 +1,13 @@
 ### JMCRC (Java implementation of MineCraft Rcon Client)
+**Remotely control any Minecraft server with RCON enabled!**  
+
+**How to enable RCON:**
+In server.properties of your minecraft server set those values
+```
+enable-rcon=true
+rcon.password=<your password>
+rcon.port=<1-65535>
+```
 
 **How to install (maven):**     
 Click packages here on the right, select the latest version and follow the instructions.
