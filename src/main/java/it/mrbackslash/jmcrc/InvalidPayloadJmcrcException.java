@@ -14,9 +14,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 package it.mrbackslash.jmcrc;
 
+/**
+ * InvalidPayload Exception. Throwed when an invalid payload is passed to the method assemblePacket.
+ */
 public class InvalidPayloadJmcrcException extends Exception{
     InvalidPayloadJmcrcException() {
         super("The payload you entered is invalid! It's either too long or it contains non-ASCII characters.");

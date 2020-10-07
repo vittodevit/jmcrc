@@ -8,7 +8,7 @@ Download JAR file in releases section and import it in your IDE.
 
 **HOW TO USE:**  
 Check out javadoc here ->  [https://mrbackslash-it.github.io/jmcrc/](https://mrbackslash-it.github.io/jmcrc/)    
-Check out the example here ->  [https://github.com/mrBackSlash-it/jmcrc/blob/master/src/test/java/LibTester.java](https://github.com/mrBackSlash-it/jmcrc/blob/master/src/test/java/LibTester.java)
+Check out the example here ->  [https://github.com/mrBackSlash-it/jmcrc/blob/master/src/test/java/it.mrbackslash.JmcrcTester.LibTester.java](https://github.com/mrBackSlash-it/jmcrc/blob/master/src/test/java/it.mrbackslash.JmcrcTester.LibTester.java)
 
 **Main methods:**  
 ```init(String host, int port, String password)``` Connects to the server  

@@ -23,12 +23,14 @@ import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 
 /**
- * PacketAssembler class. Assembles valid packets for RCON protocol + utilities. [VERSION 1.0]
- * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
+ * PacketAssembler class. Assembles valid packets for RCON protocol + utilities. [VERSION 1.1]
+ * @see <a href="https://github.com/mrBackSlash-it/jmcrc/blob/master/src/main/java/it/mrbackslash/jmcrc/PacketAssembler.java">GitHub</a>
  * @author mrBackSlash-it
  */
 public class PacketAssembler {
     private static final byte[] padding = {0x00, 0x00}; //default padding value
+    public static final int TYPE_LOGIN = 3;
+    public static final int TYPE_COMMAND = 2;
 
     /**
      * Assembles a packet valid for the RCON Protocol
@@ -36,7 +38,7 @@ public class PacketAssembler {
      * @param requestType Request type: 3 for login, 2 to run a command
      * @param payload Content of the request, can be the password or the command
      * @throws InvalidPayloadJmcrcException Packet is not valid
-     * @return byte[]
+     * @return byte[] The assembled packet, a byte array ready to be sent on tcp
      */
     public static byte[] AssemblePacket(int requestId, int requestType, @NotNull String payload) throws InvalidPayloadJmcrcException{
         //checks if payload is pure ascii

@@ -14,11 +14,22 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
+package it.mrbackslash.JmcrcTester;
 import it.mrbackslash.jmcrc.Jmcrc;
 
+/**
+ * LibTester Class.
+ * Java example to test all the functions of the library and to provide examples.
+ * @author mrBackSlash-it
+ * @see <a href="https://github.com/mrBackSlash-it/jmcrc/tree/master/src/test/java/it/mrbackslash/JmcrcTester">GitHub</a>
+ */
 public class LibTester {
     private static boolean result;
+
+    /**
+     * This example connects to the server, sends a command and then disconnects.
+     * @param args Arguments that are passed to the program
+     */
     public static void main (String[] args){
         Jmcrc client = new Jmcrc();
         try{

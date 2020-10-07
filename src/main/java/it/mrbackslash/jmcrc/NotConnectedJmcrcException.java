@@ -14,9 +14,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
 package it.mrbackslash.jmcrc;
 
+/**
+ * NotConnected Exception. Throwed when a method that needs a server connection is called, but the instance is not connected to any server.
+ */
 public class NotConnectedJmcrcException extends Exception{
     NotConnectedJmcrcException(){
         super("You are not connected to any server!");

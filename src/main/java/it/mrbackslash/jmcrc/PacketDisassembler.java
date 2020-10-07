@@ -19,8 +19,8 @@ package it.mrbackslash.jmcrc;
 import java.nio.ByteBuffer;
 
 /**
- * PacketDisassembler class. Disassembles responses from the server. [VERSION 1.0]
- * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
+ * PacketDisassembler class. Disassembles responses from the server. [VERSION 1.1]
+ * @see <a href="https://github.com/mrBackSlash-it/jmcrc/blob/master/src/main/java/it/mrbackslash/jmcrc/PacketDisassembler.java">GitHub</a>
  * @author mrBackSlash-it
 */
 public class PacketDisassembler {
@@ -31,7 +31,7 @@ public class PacketDisassembler {
     public static final byte PACKET_S_PAYLOAD = 3;
 
     /**
-     *
+     * Disassembles a valid RCON response from the server
      * @param packet byte[], contains the raw response from the server
      * @param type can be PACKET_S_LENGTH, PACKET_S_REQUEST_ID, PACKET_S_TYPE, PACKET_S_PAYLOAD depending on what you want to extract
      * @return byte[], the extracted data

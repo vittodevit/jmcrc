@@ -23,7 +23,7 @@ import java.net.Socket;
 import java.util.Arrays;
 
 /**
-* RCON Client for Minecraft servers implemented in Java [VERSION 1.0]
+* RCON Client for Minecraft servers implemented in Java [VERSION 1.1]
 * @see <a href="https://github.com/mrBackSlash-it/jmcrc">GitHub Repository</a>
 * @author mrBackSlash-it
  */
@@ -39,12 +39,14 @@ public class Jmcrc {
     private byte[] dataBuffer;
 
     /**
-     *
+     * Creates a connection to the server and sends a login packet.
      * @param host Hostname or IP Address of the Minecraft Server
      * @param port TCP Port where server RCON is listening, usually 25575
      * @param password RCON Password
-     * @return boolean
+     * @return boolean (True if login was successful)
      * @throws UnableToConnectJmcrcException Throwed when server is unreachable
+     * @throws IOException Socket error
+     * @throws InvalidPayloadJmcrcException The payload is not valid (either too long or not ASCII)
      */
     public boolean init(@NotNull String host, int port, @NotNull String password) throws UnableToConnectJmcrcException, IOException, InvalidPayloadJmcrcException {
         if(isConnected()){
@@ -61,7 +63,7 @@ public class Jmcrc {
         Random rand = new Random();
         requestId = rand.nextInt(2147483647);
         //assemble login packet
-        byte[] loginPacket = PacketAssembler.AssemblePacket(requestId, 3, password);
+        byte[] loginPacket = PacketAssembler.AssemblePacket(requestId, PacketAssembler.TYPE_LOGIN, password);
         //write login packet
         out.write(loginPacket);
         //creating data buffer
@@ -85,18 +87,20 @@ public class Jmcrc {
     }
 
     /**
-     * This function sends a command to a server after the connection has been initialized
+     * Sends a command to a server after the connection has been initialized
      * @param payload Command to send
      * @return String (server response)
      * @throws IOException Socket fail
      * @throws NotConnectedJmcrcException You aren't connected to any server.
+     * @throws InvalidPayloadJmcrcException Invalid payload (either too long or non-ASCII)
+     * @throws InvalidPacketJmcrcException Invalid packet received from the server or passed to the function DisassemblePacket
      */
     public String send(String payload) throws IOException, NotConnectedJmcrcException, InvalidPayloadJmcrcException, InvalidPacketJmcrcException{
         if(!isConnected()){
             throw new NotConnectedJmcrcException();
         }
         //assemble login packet
-        byte[] requestPacket = PacketAssembler.AssemblePacket(requestId, 2, payload);
+        byte[] requestPacket = PacketAssembler.AssemblePacket(requestId, PacketAssembler.TYPE_COMMAND, payload);
         //write login packet
         out.write(requestPacket);
         //creating data buffer
