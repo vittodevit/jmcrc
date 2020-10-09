@@ -23,5 +23,5 @@ Check out the example here ->  [https://github.com/mrBackSlash-it/jmcrc/blob/1.1
 ```init(String host, int port, String password)``` Connects to the server  
 ```send(String payload)``` Sends a command   
 ```disconnect()``` closes tcp socket and disconnects from the server  
-```isConencted()``` returns connection state (boolean)
+```isConencted()``` returns connection state (boolean)   
 ```getAddress() and getPort()``` they return the address and the port of that instance
