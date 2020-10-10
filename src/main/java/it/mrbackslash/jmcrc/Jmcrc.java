@@ -75,6 +75,8 @@ public class Jmcrc {
         System.arraycopy(dataBuffer,4, responseId, 0, 4);
         //reading response id, if is the same as request id for login, the operation was successful
         if(!Arrays.equals(PacketAssembler.intToByteArray(requestId), responseId)){
+            //if login is not successful clear buffer and return
+            dataBuffer = new byte[8192];
             return false;
         }
         //set class variables
